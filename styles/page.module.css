@@ -1,0 +1,12 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15rem;
+    min-height: 100vh;
+    background-color: #09010e;
+    color: #8828c4;
+  }
+
+  
