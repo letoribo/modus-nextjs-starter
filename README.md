@@ -9,11 +9,11 @@ pnpm install
 ```
 
 ```bash
-npm run dev
+npm run vercel
 # or
-yarn dev
+yarn vercel
 # or
-pnpm dev
+pnpm vercel
 ```
 
 ```bash

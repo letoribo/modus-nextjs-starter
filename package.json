@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "modus-dev": "modus dev ./api",
+    "vercel-dev": "vercel dev --local-config ./vercel.json",
     "next-dev": "next dev",
     "dev": "concurrently \"npm run next-dev\" \"npm run modus-dev\"",
+    "vercel": "concurrently \"npm run vercel-dev\" \"npm run modus-dev\"",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

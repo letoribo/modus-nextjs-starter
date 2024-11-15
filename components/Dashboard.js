@@ -39,7 +39,7 @@ const Dashboard = ({ data }) => {
           💬
         </button>
       </div>
-      {data.sayHello}
+      {data.data.sayHello}
     </>
   )
 }
