@@ -1,0 +1,39 @@
+import { ApolloServer } from '@apollo/server';
+import { startServerAndCreateNextHandler } from '@as-integrations/next';
+import { makeExecutableSchema } from '@graphql-tools/schema';
+import typeDefs from '@/lib/typeDefs.js';
+const token = process.env.token;
+
+const resolvers = {
+  Query: {
+    getQuote: async () => {
+      const response = await fetch(`https://proj-self.hypermode.app/graphql`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          variables: {},
+          query: '{ randomQuote { author quote } }',
+        })
+      })
+      const data = await response.json();
+      console.log(data)
+      return data.data.randomQuote;
+    }
+  },
+}
+
+const schema = makeExecutableSchema({ typeDefs, resolvers })
+
+const server = new ApolloServer({
+  schema,
+  introspection: true,
+});
+
+const handler = startServerAndCreateNextHandler(server, {
+  context: async (req, res) => ({ req, res }),
+});
+
+export { handler as GET, handler as POST };

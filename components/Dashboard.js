@@ -8,8 +8,8 @@ import styles from '@/styles/dashboard.module.css'
 const Dashboard = ({ data }) => {
   const [getRandomQuote] = useLazyQuery(GET_QUOTE, {
     fetchPolicy: 'no-cache',
-    onCompleted: ({ randomQuote }) => { console.log(randomQuote)
-      const { quote, author } = randomQuote
+    onCompleted: ({ getQuote }) => {
+      const { quote, author } = getQuote
       setRes({ quote, author })
     }
   })
