@@ -18,6 +18,9 @@ pnpm dev
 
 ```bash
 curl --request POST   --header 'content-type: application/json'   --url 'http://localhost:8686/graphql'   --data '{"query":"{ sayHello }"}'
+curl 'http://localhost:8686/graphql' \
+    -H 'Content-Type: application/json' \
+    --data '{"query":"query sayHello($name: String) { sayHello(name: $name) }","variables":{ "name":"Hypermode" }}'
 curl --request POST   --header 'content-type: application/json'   --url 'http://localhost:8686/graphql'   --data '{"query":"{ randomQuote { quote author } }"}'
 ```
 
