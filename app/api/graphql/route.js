@@ -6,6 +6,27 @@ const token = process.env.token;
 
 const resolvers = {
   Query: {
+    greeting: async (_, { name }) => {
+      try {
+        const response = await fetch(`https://proj-self.hypermode.app/graphql`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            /* variables: { name },
+            query: '{query sayHello($name:String){sayHello(name: $name)}}', */
+            query: `{sayHello(name: "${name}")}`,
+          })
+        })
+        const data = await response.json();
+        console.log(data)
+        return data.data;
+      } catch (error) {
+        console.error("error:", error);
+      }
+    },
     getQuote: async () => {
       const response = await fetch(`https://proj-self.hypermode.app/graphql`, {
         method: 'POST',
@@ -14,7 +35,7 @@ const resolvers = {
           Authorization: `Bearer ${token}`
         },
         body: JSON.stringify({
-          variables: {},
+          //variables: {},
           query: '{ randomQuote { author quote } }',
         })
       })
