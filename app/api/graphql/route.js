@@ -3,11 +3,12 @@ import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { makeExecutableSchema } from '@graphql-tools/schema';
 import typeDefs from '@/lib/typeDefs.js';
 const token = process.env.token;
+const hypermode_url = process.env.hypermode_url || "https://proj-self.hypermode.app/graphql";
 
 const resolvers = {
   Query: {
     getQuote: async () => {
-      const response = await fetch(`https://proj-self.hypermode.app/graphql`, {
+      const response = await fetch(hypermode_url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
