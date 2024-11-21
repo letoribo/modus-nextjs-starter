@@ -16,6 +16,14 @@ yarn dev
 pnpm dev
 ```
 
+## Security Risks
+
+For users on 14-Day Trial
+this is the easiest way to build split-stack application
+but it exposes your authorization token
+
+![Security Risks](https://res.cloudinary.com/dzd5mddlm/image/upload/v1732209014/Discord/eqw6rmqpqb2cfyyqun6z.png)
+
 ```bash
 curl --request POST   --header 'content-type: application/json'   --url 'http://localhost:8686/graphql'   --data '{"query":"{ sayHello }"}'
 curl --request POST   --header 'content-type: application/json'   --url 'http://localhost:8686/graphql'   --data '{"query":"{ randomQuote { quote author } }"}'
